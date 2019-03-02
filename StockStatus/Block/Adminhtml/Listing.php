@@ -61,7 +61,7 @@ class Listing extends \Magento\Backend\Block\Widget\Grid\Extended
                 'header' => __('ID'),
                 'index' => 'entity_id',
                 'class' => 'xxx',
-                'width' => '50px',
+                'width' => '20px',
             ]
         );
         $this->addColumn(
@@ -85,17 +85,34 @@ class Listing extends \Magento\Backend\Block\Widget\Grid\Extended
         $this->addColumn(
             'total_quantity',
             [
-                'header' => __('Total Quantity'),
+                'header' => __('Total Qty'),
                 'renderer' => 'Chin\StockStatus\Block\Adminhtml\Renderer\Quantity',
-                'type' => 'text'
+                'width' => '50px',
             ]
         );
         $this->addColumn(
             'available_quantity',
             [
-                'header' => __('Available Quantity'),
+                'header' => __('Available Qty'),
                 'renderer' => 'Chin\StockStatus\Block\Adminhtml\Renderer\Available',
-                'type' => 'text'
+                'width' => '50px',
+            ]
+        );
+        $this->addColumn(
+            'pending_order',
+            [
+                'header' => __('Qty in pending orders'),
+                'renderer' => 'Chin\StockStatus\Block\Adminhtml\Renderer\Pending',
+                'width' => '50px',
+            ]
+        );
+        $this->addColumn(
+            'processing_order',
+            [
+                'header' => __('Qty in processing orders'),
+                'renderer' => 'Chin\StockStatus\Block\Adminhtml\Renderer\Processing',
+                'width' => '50px',
+                'data_type' => 'String'
             ]
         );
 

@@ -12,6 +12,9 @@ namespace Chin\StockStatus\Block\Adminhtml\Renderer;
  */
 class Quantity extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Text
 {
+
+    protected $_stockItemRepository;
+
     /**
      * Type config
      *
@@ -30,18 +33,6 @@ class Quantity extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Text
         return $this->_stockItemRepository->get($productId)->getQty();
     }
 
-
-    /**
-    * Returns whether this qty field must be inactive
-    *
-    * @param \Magento\Framework\DataObject $row
-    * @return bool
-    */
-    protected function _isInactive($row)
-    {
-        return $this->typeConfig->isProductSet($row->getTypeId());
-    }
-
     /**
      * Render product qty field
      *
@@ -51,7 +42,7 @@ class Quantity extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Text
     public function render(\Magento\Framework\DataObject $row)
     {
         $id = $row->getData('entity_id');
-        $availQty = $this->getStockItem($id);
-        return $availQty;
+        $qty = $this->getStockItem($id);
+        return (String)$qty;
     }
 }
