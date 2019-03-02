@@ -1,12 +1,31 @@
 <?php
 namespace Chin\StockStatus\Block\Adminhtml\Renderer;
 
+/**
+ * Renderer for Available Qty column in stock status grid
+ *
+ * @author     
+ */
 class Available extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Text
 {
 
+    /**
+     * @var \Magento\Sales\Model\ResourceModel\Order\CollectionFactory
+     */
     protected $_orderCollectionFactory;
+
+    /**
+     * @var \Magento\CatalogInventory\Model\Stock\StockItemRepository
+     */
     protected $_stockItemRepository;
 
+    /**
+     * Constructor
+     *
+     * @param \Magento\CatalogInventory\Model\Stock\StockItemRepository $stockItemRepository
+     * @param \Magento\Sales\Model\ResourceModel\Order\CollectionFactory $orderCollectionFactory
+     *
+     */
     public function __construct(
         \Magento\CatalogInventory\Model\Stock\StockItemRepository $stockItemRepository,
         \Magento\Sales\Model\ResourceModel\Order\CollectionFactory $orderCollectionFactory)
@@ -15,6 +34,12 @@ class Available extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Text
         $this->_stockItemRepository = $stockItemRepository;
     }
 
+    /**
+     * Get Available Quantity by Product Id
+     *
+     * @param $productId
+     * @return int $remain
+     */
     public function getStockQty($productId)
     {
         $total = $this->_stockItemRepository->get($productId)->getQty();
@@ -39,7 +64,7 @@ class Available extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Text
     }
 
     /**
-     * Render product qty field
+     * Render available quantity column
      *
      * @param \Magento\Framework\DataObject $row
      * @return string
