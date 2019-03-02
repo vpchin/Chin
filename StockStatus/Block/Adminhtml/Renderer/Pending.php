@@ -1,17 +1,37 @@
 <?php
 namespace Chin\StockStatus\Block\Adminhtml\Renderer;
 
+/**
+ * Renderer for Qty in pending orders column in stock status grid
+ *
+ * @author     
+ */
 class Pending extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Text
 {
 
+    /**
+     * @var \Magento\Sales\Model\ResourceModel\Order\CollectionFactory
+     */
     protected $_orderCollectionFactory;
 
+    /**
+     * Constructor
+     *
+     * @param \Magento\Sales\Model\ResourceModel\Order\CollectionFactory $orderCollectionFactory
+     *
+     */
     public function __construct(
         \Magento\Sales\Model\ResourceModel\Order\CollectionFactory $orderCollectionFactory)
     {
         $this->_orderCollectionFactory = $orderCollectionFactory;
     }
 
+    /**
+     * Get Qty in pending orders by Product Id
+     *
+     * @param $productId
+     * @return int $pending
+     */
     public function getStockQty($productId)
     {
         $pending = 0;
@@ -33,7 +53,7 @@ class Pending extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Text
     }
 
     /**
-     * Render product qty field
+     * Render pending qty column
      *
      * @param \Magento\Framework\DataObject $row
      * @return string

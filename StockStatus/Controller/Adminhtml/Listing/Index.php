@@ -1,6 +1,11 @@
 <?php
 namespace Chin\StockStatus\Controller\Adminhtml\Listing;
 
+/**
+ * Controller for Stock Status
+ *
+ * @author     
+ */
 class Index extends \Magento\Backend\App\Action
 {
 	/**

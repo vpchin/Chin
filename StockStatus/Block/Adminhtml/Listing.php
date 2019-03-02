@@ -1,6 +1,11 @@
 <?php
 namespace Chin\StockStatus\Block\Adminhtml;
 
+/**
+ * Block for Stock Status Product Listing Grid
+ *
+ * @author     
+ */
 class Listing extends \Magento\Backend\Block\Widget\Grid\Extended
 {
 
@@ -10,10 +15,10 @@ class Listing extends \Magento\Backend\Block\Widget\Grid\Extended
     protected $productCollectionFactory;
 
 	/**
-     *
+	 * Constructor
+	 *
      * @param \Magento\Backend\Block\Template\Context $context
      * @param \Magento\Backend\Helper\Data $backendHelper
-     * @param \Magento\Framework\Registry $registry
      * @param \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory
      * @param array $data
      */
@@ -51,7 +56,7 @@ class Listing extends \Magento\Backend\Block\Widget\Grid\Extended
     }
 
     /**
-     * @return $this
+     * prepare columns
      */
     protected function _prepareColumns()
     {
@@ -60,7 +65,6 @@ class Listing extends \Magento\Backend\Block\Widget\Grid\Extended
             [
                 'header' => __('ID'),
                 'index' => 'entity_id',
-                'class' => 'xxx',
                 'width' => '20px',
             ]
         );
@@ -69,7 +73,6 @@ class Listing extends \Magento\Backend\Block\Widget\Grid\Extended
             [
                 'header' => __('Name'),
                 'index' => 'name',
-                'class' => 'xxx',
                 'width' => '50px',
             ]
         );
@@ -78,7 +81,6 @@ class Listing extends \Magento\Backend\Block\Widget\Grid\Extended
             [
                 'header' => __('Sku'),
                 'index' => 'sku',
-                'class' => 'xxx',
                 'width' => '50px',
             ]
         );
@@ -112,7 +114,6 @@ class Listing extends \Magento\Backend\Block\Widget\Grid\Extended
                 'header' => __('Qty in processing orders'),
                 'renderer' => 'Chin\StockStatus\Block\Adminhtml\Renderer\Processing',
                 'width' => '50px',
-                'data_type' => 'String'
             ]
         );
 
